@@ -1,0 +1,19 @@
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  /* Adjust as needed */
+}
+
+.button {
+  padding: 5px 15px;
+  background-color: #c36b85;
+  color: #f8f1df;
+  border: none;
+  cursor: pointer;
+  margin: 0px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
