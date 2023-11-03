@@ -1,17 +1,15 @@
 import { css } from "@emotion/react"
 import { ArrowBackUp } from 'tabler-icons-react'
+import BackButton from "./BackButton" // Import the BackButton component
+
 
 export const ShoppingCart: React.FC = () => {
 	return (
 		<div className="shopping-list-container">
 			<header css={css`
-				margin-top: 30px;
+				margin-top: 20px;
 			`}>
-				<button className="back-button"> <ArrowBackUp
-					size={20}
-					strokeWidth={2}
-					color={'#a7516c'}
-				/></button>
+				<BackButton />
 			</header>
 
 			<div css={css`
@@ -23,37 +21,42 @@ export const ShoppingCart: React.FC = () => {
 						display: flex;
 						flex-direction: column;
 						align-self: center;
+						margin-bottom: 10px;
 					`}>
 					<img css={css`
 						display: flex;
 
-						width: 80px;
-						height: 80px;
-						border-radius: 50px;
+						width: 60px;
+						height: 60px;
+						border-radius: 30px;
 					`}
 						src="https://placehold.co/100x100" />
 				</div>
 
 				<div css={css`
 						margin-left: 50px;
-					`}>
-					<div css={css`
-						align-self: stretch;
-						padding: 13px 0;
-					`}></div>
-					<div css={css`
+						display: flex;
+						flex-direction: column;
 						align-items: center;
+						margin-top: 0px;
 						margin-bottom: 0px;
-						font-size: 20px;
+					`}>
+
+					<div css={css`
+						margin-top: 10px;
+						margin-bottom: 0px;
+						font-size: 18px;
 						font-weight: 500;
 					`}>Shopping List</div>
 					<p css={css`
-						align-self: center;
+						margin-top:0px;
+						align-self: start;
+						font-size: smaller;
 					`}>@'s Shopping List</p>
 				</div>
 			</div>
 			<div css={css`
-				margin: 25px;
+				margin-left: 25px;
 				font-family: 'Poppins';
 				font-size: 15px;
 			`}>
@@ -63,8 +66,10 @@ export const ShoppingCart: React.FC = () => {
 					<ListSection title="Pantry" items={[]} />
 				</section>
 			</div>
-
-
+			<div css={css`
+						align-self: stretch;
+						padding: 12px 0;
+					`}></div>
 		</div>
 
 	)
@@ -81,7 +86,7 @@ function ListSection({ title, items }: ListSectionProps) {
 		<div className="list-section">
 			<div css={css`
 						align-self: stretch;
-						padding: 12px 0;
+						padding: 10px 0;
 					`}>
 				<div css={css`
 						height: 1px;

@@ -3,6 +3,7 @@ import { ExclamationMark } from 'tabler-icons-react'
 import { ShoppingCart } from 'tabler-icons-react'
 import { Search } from 'tabler-icons-react'
 import { Menu2 } from 'tabler-icons-react'
+import { Link, Outlet } from "react-router-dom"
 
 import { css } from "@emotion/react"
 export const Home: React.FC = () => {
@@ -44,19 +45,21 @@ export const Home: React.FC = () => {
 						outline: none;
 						border: none;
 					`} />
-						<button css={css`
+						<Link to="/ingredient">
+							<button css={css`
 						padding: 5px;
 						background-color: #c36b85;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
 					`}>
-							<Search
-								size={20}
-								strokeWidth={2}
-								color={'#e6b3b3'}
-							/>
-						</button>
+								<Search
+									size={20}
+									strokeWidth={2}
+									color={'#e6b3b3'}
+								/>
+							</button>
+						</Link>
 					</div>
 
 					<img css={css`
@@ -74,11 +77,11 @@ export const Home: React.FC = () => {
 				display: flex;
 				flex-direction: column;
 				align-items: end;
-				margin: 2px;
 				`}>
 					<button css={css`
-						font-size:12px;
 						color:#a7516c;
+						margin-right:2px;
+						margin-bottom: 8px;
 					`}>Change View Option =</button>
 				</div>
 			</nav>
@@ -175,25 +178,39 @@ export const Home: React.FC = () => {
 			`}>
 				<section className="storage">
 					<StorageSection title="Refrigerator" items={[
-						{ ingredient: "Shrimp", quantity: "500g", expiration: "2023/11/01" },
+						{ ingredient: "Shrimp	", quantity: "500g		", expiration: "2023/11/01" },
 						// ... add other items
 					]} />
+					<button css={css`
+				color: #a7516c;
+			`} className="add-more-button">+ Add More</button>
 					<div css={css`
 						align-self: stretch;
-						padding: 12px 0;
+						padding: 10px 0;
 					`}></div>
+
+
 					<StorageSection title="Freezer" items={[
-						{ ingredient: "Ice Cream", quantity: "200ml", expiration: "2024/01/12" },
+						{ ingredient: "Ice Cream	", quantity: "200ml		", expiration: "2024/01/12" },
 						// ... add other items
 					]} />
+
+					<button css={css`
+				color: #a7516c;
+			`} className="add-more-button">+ Add More</button>
 					<div css={css`
 						align-self: stretch;
-						padding: 12px 0;
+						padding: 10px 0;
 					`}></div>
+
 					<StorageSection title="Pantry" items={[
-						{ ingredient: "Flour", quantity: "10g", expiration: "2024/11/01" },
+						{ ingredient: "Flour	", quantity: "10g		", expiration: "2024/11/01" },
 						// ... add other items
 					]} />
+					<button css={css`
+				color: #a7516c;
+			`} className="add-more-button">+ Add More</button>
+
 				</section>
 			</div>
 		</div>
@@ -212,7 +229,28 @@ interface StorageSectionProps {
 function StorageSection({ title, items }: StorageSectionProps) {
 	return (
 		<div className="storage-section">
-			<h2>{title}</h2>
+			<div css={css`
+				display: flex;
+				flex-direction: column;
+				align-items:start;
+				margin-bottom: 0px;
+				font-family: 'Poppins', system-ui;
+				font-size: 18px;
+				font-weight: 500;
+			`}>{title}
+				<div css={css`
+						align-self: stretch;
+						padding: 11px 0;
+					`}>
+					<div css={css`
+						height: 1pt;
+						width: 100%;
+						background:#a7516c; 
+					`}>
+					</div>
+				</div></div>
+
+
 			<ul>
 				{items.map(item => (
 					<li key={item.ingredient}>
@@ -221,7 +259,10 @@ function StorageSection({ title, items }: StorageSectionProps) {
 						<span>{item.expiration}</span>
 					</li>
 				))}
+
 			</ul>
+
 		</div>
+
 	);
 }

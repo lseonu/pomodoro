@@ -29,11 +29,12 @@ export const PageLayout: React.FC = () => {
 		<div
 			css={css`
 				display: flex;
+				margin-left: 0px;
 				margin: auto;
 				flex-direction: column;
 				height: 100vh;
 				width: 100vw;
-				max-width: 800px;
+				max-width: 480px;
 				font-size: 12px;
 				background-color: #f9f4e6;
 			`}>
@@ -50,6 +51,7 @@ export const PageLayout: React.FC = () => {
 					justify-content: space-around;
 					background-color: #f7cdd0;
 					padding: 12px;
+					margin-left: 0px;
 					
 				`}>
 				<TabBarItem name="Shopping List" path="/cart" icon={<ShoppingCart
@@ -67,7 +69,6 @@ export const PageLayout: React.FC = () => {
 					strokeWidth={2}
 					color={'#c36b85'}
 				/>} />
-
 			</nav>
 		</div>
 	)
