@@ -44,6 +44,7 @@ const RecipeItem: React.FC<RecipeItemProps> = ({ title, ingredients }) => {
 					`}></div>
 			<button css={css`
 			margin-left: 30px;
+			background-color: #f9f4e6;
 				color: #a7516c;
 				font-size: 14px;
 			`} className="view-full-button">+ View Full Recipe</button>
@@ -61,7 +62,7 @@ const RecipeItem: React.FC<RecipeItemProps> = ({ title, ingredients }) => {
 						margin-right: 25px;
 						height: 1pt;
 						width: auto;
-						background:#a7516c; 
+						background: #a7516c; 
 					`}>
 				</div>
 			</div>

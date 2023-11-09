@@ -3,7 +3,6 @@ import { PageLayout } from "./PageLayout"
 import { Home } from "./pages/Home"
 import { Recipe } from "./pages/Recipe"
 import { ShoppingCart } from "./pages/ShoppingCart"
-import { AddIngredients } from "./pages/AddIngredient"
 
 const router = createBrowserRouter([
 	{
@@ -20,10 +19,6 @@ const router = createBrowserRouter([
 			{
 				element: <ShoppingCart />,
 				path: "/cart",
-			},
-			{
-				element: <AddIngredients />,
-				path: "/ingredient",
 			}
 		],
 	},

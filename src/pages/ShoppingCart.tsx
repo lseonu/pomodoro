@@ -120,6 +120,7 @@ function ListSection({ title, items }: ListSectionProps) {
 				))}
 			</ul>
 			<button css={css`
+				background-color: #f9f4e6;
 				color: #a7516c;
 			`} className="add-more-button">+ Add More</button>
 		</div>
