@@ -4,9 +4,37 @@ import { ShoppingCart } from 'tabler-icons-react'
 import { Search } from 'tabler-icons-react'
 import { Menu2 } from 'tabler-icons-react'
 import { Link, Outlet } from "react-router-dom"
+import React, { useState } from 'react';
+import AddIngredients from './AddIngredient'
 
 import { css } from "@emotion/react"
 export const Home: React.FC = () => {
+	const [isPopupVisible, setIsPopupVisible] = useState(false);
+	const [fridgeIngredients, setFridgeIngredients] = useState([]);
+
+	const openPopup = () => {
+		setIsPopupVisible(true);
+	};
+
+	const closePopup = () => {
+		setIsPopupVisible(false);
+	};
+	const [searchString, setSearchString] = useState('');
+  
+	const handleSearchChange = (e) => {
+	  setSearchString(e.target.value);
+	}
+  
+	const handleSearch = () => {
+	  // Use the `searchString` state for your search logic
+	  console.log('Search string:', searchString);
+	}
+
+	const addToFridge = (newIngredient) => {
+		setFridgeIngredients([...fridgeIngredients, newIngredient]);
+	};
+
+
 	return (
 		<div className="container">
 			<div css={css`
@@ -21,6 +49,7 @@ export const Home: React.FC = () => {
 				`}>
 					<div>
 						<button css={css`
+							background-color: #f9f4e6;
 							padding: 4px;
 							display: flex;
 							flex-direction: column;
@@ -38,28 +67,30 @@ export const Home: React.FC = () => {
 						flex-direction: row;
 						align-items: center;
 					`}>
-						<input type="search" placeholder="Add More Ingredients" css={css`
+						<input type="search" placeholder="Add More Ingredients" 
+						value={searchString}
+						onChange={handleSearchChange}
+						css={css`
 						padding: 4px 18px;
 						font-size: 12px;
 						border-radius: 4px;
 						outline: none;
 						border: none;
 					`} />
-						<Link to="/ingredient">
-							<button css={css`
+						<button css={css`
 						padding: 5px;
 						background-color: #c36b85;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
-					`}>
+					`} onClick={openPopup}>
 								<Search
 									size={20}
 									strokeWidth={2}
 									color={'#e6b3b3'}
 								/>
 							</button>
-						</Link>
+							{isPopupVisible && <AddIngredients closePopup={closePopup} searchedItem={searchString} addToFridge={addToFridge}/>}
 					</div>
 
 					<img css={css`
@@ -79,6 +110,7 @@ export const Home: React.FC = () => {
 				align-items: end;
 				`}>
 					<button css={css`
+						background-color: #f9f4e6;
 						color:#a7516c;
 						margin-right:2px;
 						margin-bottom: 8px;
@@ -177,12 +209,10 @@ export const Home: React.FC = () => {
 				margin: 25px;
 			`}>
 				<section className="storage">
-					<StorageSection title="Refrigerator" items={[
-						{ ingredient: "Shrimp	", quantity: "500g		", expiration: "2023/11/01" },
-						// ... add other items
-					]} />
+				<StorageSection title="Refrigerator" items={fridgeIngredients} />
 					<button css={css`
-				color: #a7516c;
+					background-color: #f9f4e6;
+					color: #a7516c;
 			`} className="add-more-button">+ Add More</button>
 					<div css={css`
 						align-self: stretch;
@@ -196,7 +226,8 @@ export const Home: React.FC = () => {
 					]} />
 
 					<button css={css`
-				color: #a7516c;
+					background-color: #f9f4e6;
+					color: #a7516c;
 			`} className="add-more-button">+ Add More</button>
 					<div css={css`
 						align-self: stretch;
@@ -208,7 +239,8 @@ export const Home: React.FC = () => {
 						// ... add other items
 					]} />
 					<button css={css`
-				color: #a7516c;
+					background-color: #f9f4e6;
+					color: #a7516c;
 			`} className="add-more-button">+ Add More</button>
 
 				</section>
@@ -228,41 +260,70 @@ interface StorageSectionProps {
 
 function StorageSection({ title, items }: StorageSectionProps) {
 	return (
-		<div className="storage-section">
-			<div css={css`
-				display: flex;
-				flex-direction: column;
-				align-items:start;
-				margin-bottom: 0px;
-				font-family: 'Poppins', system-ui;
-				font-size: 18px;
-				font-weight: 500;
-			`}>{title}
-				<div css={css`
-						align-self: stretch;
-						padding: 11px 0;
-					`}>
-					<div css={css`
-						height: 1pt;
-						width: 100%;
-						background:#a7516c; 
-					`}>
-					</div>
-				</div></div>
-
-
-			<ul>
-				{items.map(item => (
-					<li key={item.ingredient}>
-						<span>{item.ingredient}</span>
-						<span>{item.quantity}</span>
-						<span>{item.expiration}</span>
-					</li>
-				))}
-
-			</ul>
-
+	  <div className="storage-section">
+		<div css={titleContainerStyle}>
+		  <div css={titleStyle}>{title}</div>
+		  <div css={separatorStyle}></div>
 		</div>
-
+  
+		<ul css={listStyle}>
+		  {items.map((item, index) => (
+			<li key={index} css={listItemStyle}>
+			  <div css={itemNameStyle}>{item.ingredient}</div>
+			  <div css={itemQuantityStyle}>{item.quantity}</div>
+			  <div css={itemExpirationStyle}>{item.expiration}</div>
+			</li>
+		  ))}
+		</ul>
+	  </div>
 	);
-}
+  }
+  
+  const titleContainerStyle = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'start',
+	marginBottom: '10px',
+  };
+  
+  const titleStyle = {
+	fontFamily: 'Poppins, system-ui',
+	fontSize: '18px',
+	fontWeight: 500,
+  };
+  
+  const separatorStyle = {
+	height: '1pt',
+	width: '100%',
+	background: '#a7516c',
+  };
+  
+  const listStyle = {
+	listStyleType: 'none',
+	padding: 0,
+  };
+  
+  const listItemStyle = {
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'space-between',
+	alignItems: 'center',
+	marginBottom: '8px',
+  };
+  
+  const itemNameStyle = {
+	flex: 1,
+	marginRight: '16px',
+  };
+  
+  const itemQuantityStyle = {
+	flex: 1,
+	marginRight: '16px',
+  };
+  
+  const itemExpirationStyle = {
+	flex: 1,
+  };
+  
+  export default StorageSection;
+  
