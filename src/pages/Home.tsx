@@ -3,14 +3,18 @@ import { ExclamationMark } from 'tabler-icons-react'
 import { ShoppingCart } from 'tabler-icons-react'
 import { Search } from 'tabler-icons-react'
 import { Menu2 } from 'tabler-icons-react'
-import { Link, Outlet } from "react-router-dom"
 import React, { useState } from 'react';
 import AddIngredients from './AddIngredient'
+import { Link, Outlet } from "react-router-dom"
 
 import { css } from "@emotion/react"
 export const Home: React.FC = () => {
 	const [isPopupVisible, setIsPopupVisible] = useState(false);
 	const [fridgeIngredients, setFridgeIngredients] = useState([]);
+
+	const [showFridgeSearch, setShowFridgeSearch] = useState(false);
+    const [showFreezerSearch, setShowFreezerSearch] = useState(false);
+    const [showPantrySearch, setShowPantrySearch] = useState(false);
 
 	const openPopup = () => {
 		setIsPopupVisible(true);
@@ -33,6 +37,10 @@ export const Home: React.FC = () => {
 	const addToFridge = (newIngredient) => {
 		setFridgeIngredients([...fridgeIngredients, newIngredient]);
 	};
+
+	const toggleFridgeSearch = () => setShowFridgeSearch(!showFridgeSearch);
+    const toggleFreezerSearch = () => setShowFreezerSearch(!showFreezerSearch);
+    const togglePantrySearch = () => setShowPantrySearch(!showPantrySearch);
 
 
 	return (
@@ -62,7 +70,7 @@ export const Home: React.FC = () => {
 							/>
 						</button>
 					</div>
-					<div css={css`
+					{/* <div css={css`
 						display: flex;
 						flex-direction: row;
 						align-items: center;
@@ -91,7 +99,7 @@ export const Home: React.FC = () => {
 								/>
 							</button>
 							{isPopupVisible && <AddIngredients closePopup={closePopup} searchedItem={searchString} addToFridge={addToFridge}/>}
-					</div>
+					</div> */}
 
 					<img css={css`
 						display: flex;
@@ -210,14 +218,45 @@ export const Home: React.FC = () => {
 			`}>
 				<section className="storage">
 				<StorageSection title="Refrigerator" items={fridgeIngredients} />
-					<button css={css`
-					background-color: #f9f4e6;
-					color: #a7516c;
-			`} className="add-more-button">+ Add More</button>
-					<div css={css`
-						align-self: stretch;
-						padding: 10px 0;
-					`}></div>
+
+				
+				<button onClick={toggleFridgeSearch} css={css`background-color: #f9f4e6; color: #a7516c;`} className="add-more-button">+ Add More</button>
+                    {showFridgeSearch && (
+                        <div css={css`display: flex; flex-direction: row; align-items: center;`}>
+                            {<div css={css`
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+					`}>
+						<input type="search" placeholder="Add More Ingredients" 
+						value={searchString}
+						onChange={handleSearchChange}
+						css={css`
+						padding: 4px 18px;
+						font-size: 12px;
+						border-radius: 4px;
+						outline: none;
+						border: none;
+					`} />
+						<button css={css`
+						padding: 5px;
+						background-color: #c36b85;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					`} onClick={openPopup}>
+								<Search
+									size={20}
+									strokeWidth={2}
+									color={'#e6b3b3'}
+								/>
+							</button>
+							{isPopupVisible && <AddIngredients closePopup={closePopup} searchedItem={searchString} addToFridge={addToFridge}/>}
+					</div>}
+                        </div>
+                    )}
+					
+					
 
 
 					<StorageSection title="Freezer" items={[
@@ -225,23 +264,86 @@ export const Home: React.FC = () => {
 						// ... add other items
 					]} />
 
-					<button css={css`
-					background-color: #f9f4e6;
-					color: #a7516c;
-			`} className="add-more-button">+ Add More</button>
-					<div css={css`
-						align-self: stretch;
-						padding: 10px 0;
-					`}></div>
+<button onClick={toggleFreezerSearch} css={css`background-color: #f9f4e6; color: #a7516c;`} className="add-more-button">+ Add More</button>
+                    {showFreezerSearch && (
+                        <div css={css`display: flex; flex-direction: row; align-items: center;`}>
+                            {<div css={css`
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+					`}>
+						<input type="search" placeholder="Add More Ingredients" 
+						value={searchString}
+						onChange={handleSearchChange}
+						css={css`
+						padding: 4px 18px;
+						font-size: 12px;
+						border-radius: 4px;
+						outline: none;
+						border: none;
+					`} />
+						<button css={css`
+						padding: 5px;
+						background-color: #c36b85;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					`} onClick={openPopup}>
+								<Search
+									size={20}
+									strokeWidth={2}
+									color={'#e6b3b3'}
+								/>
+							</button>
+							{isPopupVisible && <AddIngredients closePopup={closePopup} searchedItem={searchString} addToFridge={addToFridge}/>}
+					</div>}
+                        </div>
+                    )}
+					
 
 					<StorageSection title="Pantry" items={[
 						{ ingredient: "Flour	", quantity: "10g		", expiration: "2024/11/01" },
 						// ... add other items
 					]} />
-					<button css={css`
-					background-color: #f9f4e6;
-					color: #a7516c;
-			`} className="add-more-button">+ Add More</button>
+
+<button onClick={togglePantrySearch} css={css`background-color: #f9f4e6; color: #a7516c;`} className="add-more-button">+ Add More</button>
+                    {showPantrySearch && (
+                        <div css={css`display: flex; flex-direction: row; align-items: center;`}>
+                            {<div css={css`
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+					`}>
+						<input type="search" placeholder="Add More Ingredients" 
+						value={searchString}
+						onChange={handleSearchChange}
+						css={css`
+						padding: 4px 18px;
+						font-size: 12px;
+						border-radius: 4px;
+						outline: none;
+						border: none;
+					`} />
+						<button css={css`
+						padding: 5px;
+						background-color: #c36b85;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					`} onClick={openPopup}>
+								<Search
+									size={20}
+									strokeWidth={2}
+									color={'#e6b3b3'}
+								/>
+							</button>
+							{isPopupVisible && <AddIngredients closePopup={closePopup} searchedItem={searchString} addToFridge={addToFridge}/>}
+					</div>}
+                        </div>
+                    )}
+
+
+			
 
 				</section>
 			</div>
