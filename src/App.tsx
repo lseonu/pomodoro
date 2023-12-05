@@ -1,7 +1,6 @@
-import "./App.css"
-import { RootRouter } from "./Router"
-
+import "./App.css";
+import { RootRouter } from "./Router";
 
 export const App: React.FC = () => {
-	return <RootRouter />
-}
+  return <RootRouter />;
+};

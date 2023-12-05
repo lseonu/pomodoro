@@ -13,8 +13,8 @@
   
   .popup-content {
     background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 10px;
+    padding-top: 0px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     text-align: center;
@@ -22,15 +22,18 @@
   
   .popup-content header {
     background-color: #a7516c;
-    padding: 20px;
+    padding: 15px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    border-radius: 10px;
+    justify-content: top;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 0px;
   }
   
   .popup-content header div {
-    margin-left: 10px;
+    margin-left: 0px;
     font-family: 'Poppins' system-ui;
     font-size: 18px;
     font-weight: 500;
@@ -45,8 +48,7 @@
   .popup-content .actions div {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin: 10px;
+    margin: auto;
     text-align: center;
   }
   
@@ -54,25 +56,23 @@
     display: flex;
     flex-direction: column;
     align-self: start;
-    padding: 10px;
-    color: #f9f4e6;
-    font-size: 15px;
-    background-color: #c36b85;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #c36b85;
+    font-size: 14px;
+    background-color: #e6b3b3;
     border-radius: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
   }
   
   
 .close-button {
   background-color: #c36b85;
   color: #fff;
-  border: none;
-  padding: 8px 12px;
-  font-size: 14px;
+  padding: none;
+  font-size: 10px;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 }
 
 .add-to-fridge-button {
@@ -80,7 +80,7 @@
   color: #fff;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 10px;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 16px;

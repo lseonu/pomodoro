@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import "./popup.css";
 import { ArrowBackUp } from "tabler-icons-react";
 
-function AddIngredients({ closePopup, searchedItem, addToFridge }) {
+function AddFreezer({ closePopup, searchedItem, addToFreezer, addToPantry }) {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const recipesDatabase = [
     { name: "Peach Cobbler", ingredients: ["Peach", "Flour", "Sugar"] },
@@ -43,12 +43,21 @@ function AddIngredients({ closePopup, searchedItem, addToFridge }) {
     }
   }, [searchedItem]);
 
-  const handleAddToFridge = () => {
+  const handleAddToFreezer = () => {
     const newIngredient = {
       ingredient: searchedItem,
-      expiration: "2023/12/24", // Set the expiration date as needed
+      expiration: "2024/01/09", // Set the appropriate expiration date
     };
-    addToFridge(newIngredient);
+    addToFreezer(newIngredient);
+    closePopup();
+  };
+
+  const handleAddToPantry = () => {
+    const newIngredient = {
+      ingredient: searchedItem,
+      expiration: "2024/03/24", // Set the appropriate expiration date
+    };
+    addToPantry(newIngredient);
     closePopup();
   };
 
@@ -229,7 +238,7 @@ function AddIngredients({ closePopup, searchedItem, addToFridge }) {
           >
             <div></div>
             <button
-              onClick={handleAddToFridge}
+              onClick={handleAddToFreezer}
               css={css`
                 font-family: "Poppins" system-ui;
                 padding: None;
@@ -250,4 +259,4 @@ function AddIngredients({ closePopup, searchedItem, addToFridge }) {
   );
 }
 
-export default AddIngredients;
+export default AddFreezer;
