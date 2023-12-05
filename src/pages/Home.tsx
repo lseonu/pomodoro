@@ -63,29 +63,49 @@ export const Home: React.FC = () => {
   const closePopup = () => {
     setIsPopupVisible(false);
   };
-  const [searchString, setSearchString] = useState("");
+  const [searchString1, setSearchString1] = useState("");
+  const [searchString2, setSearchString2] = useState("");
+  const [searchString3, setSearchString3] = useState("");
 
-  const handleSearchChange = (e) => {
-    setSearchString(e.target.value);
+  const handleSearchChange1 = (e) => {
+    setSearchString1(e.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearchChange2 = (e) => {
+    setSearchString2(e.target.value);
+  };
+
+  const handleSearchChange3 = (e) => {
+    setSearchString3(e.target.value);
+  };
+
+  const handleSearch1 = () => {
     // Use the `searchString` state for your search logic
-    console.log("Search string:", searchString);
+    console.log("Search string:", searchString1);
   };
 
-  const handleAddToFridge = (newIngredient) => {
-    setFridgeIngredients([...fridgeIngredients, newIngredient]);
+  const handleSearch2 = () => {
+    // Use the `searchString` state for your search logic
+    console.log("Search string:", searchString2);
+  };
+
+  const handleSearch3 = () => {
+    // Use the `searchString` state for your search logic
+    console.log("Search string:", searchString3);
+  };
+
+  const handleAddToFridge = (newIngredient1) => {
+    setFridgeIngredients([...fridgeIngredients, newIngredient1]);
     setShowFridgeSearch(false); // Hide the search bar after adding
   };
 
-  const handleAddToFreezer = (newIngredient) => {
-    setFreezerIngredients([...freezerIngredients, newIngredient]);
+  const handleAddToFreezer = (newIngredient2) => {
+    setFreezerIngredients([...freezerIngredients, newIngredient2]);
     setShowFreezerSearch(false); // Hide the search bar after adding
   };
 
-  const handleAddToPantry = (newIngredient) => {
-    setPantryIngredients([...pantryIngredients, newIngredient]);
+  const handleAddToPantry = (newIngredient3) => {
+    setPantryIngredients([...pantryIngredients, newIngredient3]);
     setShowPantrySearch(false); // Hide the search bar after adding
   };
 
@@ -356,8 +376,8 @@ export const Home: React.FC = () => {
                     <input
                       type="search"
                       placeholder="Add More Ingredients"
-                      value={searchString}
-                      onChange={handleSearchChange}
+                      value={searchString1}
+                      onChange={handleSearchChange1}
                       css={css`
                         padding: 4px 80%;
                         background-color: f9f4e6;
@@ -383,7 +403,7 @@ export const Home: React.FC = () => {
                     {isPopupVisible && (
                       <AddIngredients
                         closePopup={closePopup}
-                        searchedItem={searchString}
+                        searchedItem={searchString1}
                         addToFridge={handleAddToFridge}
                       />
                     )}
@@ -438,8 +458,8 @@ export const Home: React.FC = () => {
                     <input
                       type="search"
                       placeholder="Add More Ingredients"
-                      value={searchString}
-                      onChange={handleSearchChange}
+                      value={searchString2}
+                      onChange={handleSearchChange2}
                       css={css`
                         padding: 4px 80%;
                         background-color: f9f4e6;
@@ -465,7 +485,7 @@ export const Home: React.FC = () => {
                     {isPopupVisible && (
                       <AddFreezer
                         closePopup={closePopup}
-                        searchedItem={searchString}
+                        searchedItem={searchString2}
                         addToFreezer={handleAddToFreezer}
                       />
                     )}
@@ -518,8 +538,8 @@ export const Home: React.FC = () => {
                     <input
                       type="search"
                       placeholder="Add More Ingredients"
-                      value={searchString}
-                      onChange={handleSearchChange}
+                      value={searchString3}
+                      onChange={handleSearchChange3}
                       css={css`
                         padding: 4px 80%;
                         background-color: f9f4e6;
@@ -545,7 +565,7 @@ export const Home: React.FC = () => {
                     {isPopupVisible && (
                       <AddPantry
                         closePopup={closePopup}
-                        searchedItem={searchString}
+                        searchedItem={searchString3}
                         addToPantry={handleAddToPantry}
                       />
                     )}
