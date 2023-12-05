@@ -123,7 +123,7 @@ function AddPantry({ closePopup, searchedItem, addToPantry }) {
                 height: 250px;
                 border-radius: 8px;
               `}
-              src="https://placehold.co/100x100"
+              src="https://target.scene7.com/is/image/Target/GUEST_266b2ff0-f175-4f4d-94bf-e7056b4da7cc?wid=665&hei=665&qlt=80&fmt=webp"
               alt="Apple"
             />
           </div>

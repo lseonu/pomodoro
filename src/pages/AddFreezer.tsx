@@ -132,7 +132,7 @@ function AddFreezer({ closePopup, searchedItem, addToFreezer, addToPantry }) {
                 height: 250px;
                 border-radius: 8px;
               `}
-              src="https://placehold.co/100x100"
+              src="https://www.bigalaskaseafood.com/cdn/shop/products/cpd_BAS_2.0_720x.jpg?v=1628560037"
               alt="Apple"
             />
           </div>

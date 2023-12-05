@@ -123,7 +123,7 @@ function AddIngredients({ closePopup, searchedItem, addToFridge }) {
                 height: 250px;
                 border-radius: 8px;
               `}
-              src="https://placehold.co/100x100"
+              src="https://familytreefarms.com/wp-content/uploads/2021/03/PeachWhite-700x700.jpg"
               alt="Apple"
             />
           </div>
