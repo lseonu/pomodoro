@@ -1,5 +1,5 @@
 import "./ButtonContainer.css";
-import { ExclamationMark, FileX } from "tabler-icons-react";
+import { Divide, ExclamationMark, FileX } from "tabler-icons-react";
 import { ShoppingCart } from "tabler-icons-react";
 import { Search } from "tabler-icons-react";
 import { Menu2 } from "tabler-icons-react";
@@ -260,7 +260,7 @@ export const Home: React.FC = () => {
                 className="expires-soon"
               >
                 {" "}
-                Shrimp, Milk
+                Shrimp
               </div>
             </div>
 
@@ -312,7 +312,7 @@ export const Home: React.FC = () => {
                 className="restock-soon"
               >
                 {" "}
-                Egg, Flour
+                Peach, Flour
               </div>
             </div>
             <div
@@ -343,18 +343,33 @@ export const Home: React.FC = () => {
               onRemoveItem={removeFromFridge}
             />
 
-            <button
-              onClick={toggleFridgeSearch}
+            <div
               css={css`
-                background-color: #f9f4e6;
-                color: #a7516c;
-                margin-bottom: 20px;
-                margin-left: 370px;
+                display: flex;
+                flex-direction: row-reverse;
               `}
-              className="add-more-button"
             >
-              + Add More
-            </button>
+              <div
+                css={css`
+                  margin: 0px;
+                `}
+              ></div>
+              <button
+                onClick={toggleFridgeSearch}
+                css={css`
+                  background-color: #f9f4e6;
+                  color: #a7516c;
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: end;
+                  justify-content: center;
+                `}
+                className="add-more-button"
+              >
+                + Add More
+              </button>
+            </div>
+
             {showFridgeSearch && (
               <div
                 css={css`
@@ -379,7 +394,7 @@ export const Home: React.FC = () => {
                       value={searchString1}
                       onChange={handleSearchChange1}
                       css={css`
-                        padding: 4px 80%;
+                        padding: auto;
                         background-color: f9f4e6;
                         font-size: 12px;
                         border-radius: 4px;
@@ -425,18 +440,32 @@ export const Home: React.FC = () => {
               onRemoveItem={removeFromFreezer}
             />
 
-            <button
-              onClick={toggleFreezerSearch}
+            <div
               css={css`
-                background-color: #f9f4e6;
-                color: #a7516c;
-                margin-bottom: 20px;
-                margin-left: 370px;
+                display: flex;
+                flex-direction: row-reverse;
               `}
-              className="add-more-button"
             >
-              + Add More
-            </button>
+              <div
+                css={css`
+                  margin: 0px;
+                `}
+              ></div>
+              <button
+                onClick={toggleFreezerSearch}
+                css={css`
+                  background-color: #f9f4e6;
+                  color: #a7516c;
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: end;
+                  justify-content: center;
+                `}
+                className="add-more-button"
+              >
+                + Add More
+              </button>
+            </div>
             {showFreezerSearch && (
               <div
                 css={css`
@@ -461,7 +490,7 @@ export const Home: React.FC = () => {
                       value={searchString2}
                       onChange={handleSearchChange2}
                       css={css`
-                        padding: 4px 80%;
+                        padding: auto;
                         background-color: f9f4e6;
                         font-size: 12px;
                         border-radius: 4px;
@@ -507,18 +536,33 @@ export const Home: React.FC = () => {
               onRemoveItem={removeFromPantry}
             />
 
-            <button
-              onClick={togglePantrySearch}
+            <div
               css={css`
-                background-color: #f9f4e6;
-                color: #a7516c;
-                margin-bottom: 20px;
-                margin-left: 370px;
+                display: flex;
+                flex-direction: row-reverse;
               `}
-              className="add-more-button"
             >
-              + Add More
-            </button>
+              <div
+                css={css`
+                  margin: 0px;
+                `}
+              ></div>
+              <button
+                onClick={togglePantrySearch}
+                css={css`
+                  background-color: #f9f4e6;
+                  color: #a7516c;
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: end;
+                  justify-content: center;
+                `}
+                className="add-more-button"
+              >
+                + Add More
+              </button>
+            </div>
+
             {showPantrySearch && (
               <div
                 css={css`
@@ -532,7 +576,7 @@ export const Home: React.FC = () => {
                     css={css`
                       display: flex;
                       flex-direction: row;
-                      align-items: center;
+                      align-items: auto;
                     `}
                   >
                     <input
@@ -541,7 +585,7 @@ export const Home: React.FC = () => {
                       value={searchString3}
                       onChange={handleSearchChange3}
                       css={css`
-                        padding: 4px 80%;
+                        padding: auto;
                         background-color: f9f4e6;
                         font-size: 12px;
                         border-radius: 4px;
@@ -629,7 +673,6 @@ function StorageSection({
                 background: none;
                 border: none;
                 color: #a7516c;
-                cursor: pointer;
               `}
             >
               &#10006; {/* Unicode for 'X' symbol */}

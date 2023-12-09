@@ -5,7 +5,7 @@ import BackButton from "./BackButton"; // Import the BackButton component
 
 export const ShoppingCart: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [shoppingList, setShoppingList] = useState(["Shrimp", "Egg", "Milk"]);
+  const [shoppingList, setShoppingList] = useState(["Egg", "Milk"]);
   const [newItem, setNewItem] = useState("");
 
   const handleAddMore = () => {

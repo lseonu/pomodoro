@@ -46,7 +46,7 @@ function AddFreezer({ closePopup, searchedItem, addToFreezer, addToPantry }) {
   const handleAddToFreezer = () => {
     const newIngredient = {
       ingredient: searchedItem,
-      expiration: "2024/01/09", // Set the appropriate expiration date
+      expiration: "2024/12/21", // Set the appropriate expiration date
     };
     addToFreezer(newIngredient);
     closePopup();
@@ -162,7 +162,7 @@ function AddFreezer({ closePopup, searchedItem, addToFreezer, addToPantry }) {
                 margin-bottom: 0px;
               `}
             >
-              <span>Expiration Date</span> <span>2023/12/21</span>
+              <span>Expiration Date</span> <span>2024/2/21</span>
             </div>
           </div>
         </div>

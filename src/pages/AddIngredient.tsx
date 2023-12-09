@@ -46,7 +46,7 @@ function AddIngredients({ closePopup, searchedItem, addToFridge }) {
   const handleAddToFridge = () => {
     const newIngredient = {
       ingredient: searchedItem,
-      expiration: "2023/12/24", // Set the expiration date as needed
+      expiration: "2024/12/21", // Set the expiration date as needed
     };
     addToFridge(newIngredient);
     closePopup();
