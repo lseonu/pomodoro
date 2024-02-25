@@ -5,11 +5,11 @@ export const HomeScreen: React.FC = () => {
   return (
     <div
       css={css`
-        font-size: 100px;
+        font-size: 14px;
         font-weight: bold;
       `}
     >
-      Home page
+      Home Page
     </div>
   );
 };
