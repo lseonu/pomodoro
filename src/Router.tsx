@@ -1,24 +1,24 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageLayout } from "./PageLayout";
-import { Home } from "./pages/Home";
-import { Recipe } from "./pages/Recipe";
-import { ShoppingCart } from "./pages/ShoppingCart";
+import { HomeScreen } from "./pages/HomeScreen";
+import { Timer } from "./pages/Timer";
+import { SubjectList } from "./pages/SubjectList";
 
 const router = createBrowserRouter([
   {
     element: <PageLayout />,
     children: [
       {
-        element: <Home />,
+        element: <HomeScreen />,
         path: "/",
       },
       {
-        element: <Recipe />,
-        path: "/recipe",
+        element: <Timer />,
+        path: "/Timer",
       },
       {
-        element: <ShoppingCart />,
-        path: "/cart",
+        element: <SubjectList />,
+        path: "/SubjectList",
       },
     ],
   },
