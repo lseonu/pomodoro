@@ -1,24 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageLayout } from "./PageLayout";
-import { HomeScreen } from "./pages/HomeScreen";
-import { Timer } from "./pages/Timer";
-import { SubjectList } from "./pages/SubjectList";
+import SelectScreen from "./SelectScreen";
 
 const router = createBrowserRouter([
   {
     element: <PageLayout />,
     children: [
       {
-        element: <HomeScreen />,
+        element: <SelectScreen />,
         path: "/",
-      },
-      {
-        element: <Timer />,
-        path: "/Timer",
-      },
-      {
-        element: <SubjectList />,
-        path: "/SubjectList",
       },
     ],
   },

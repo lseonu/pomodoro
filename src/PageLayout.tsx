@@ -1,19 +1,9 @@
+import React, { useState } from "react";
 import { css } from "@emotion/react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom"; // Import Link and Outlet
+import { ArrowBigRight } from "tabler-icons-react";
 
-import {
-  CaretLeft,
-  CaretRight,
-  Circles,
-  ClockHour4,
-  Coin,
-  CurrentLocation,
-  Home,
-  List,
-  UserCircle,
-  UserPlus,
-} from "tabler-icons-react";
-
+// TabBarItem component defined outside PageLayout
 const TabBarItem: React.FC<{
   name: string;
   path: string;
@@ -36,18 +26,43 @@ const TabBarItem: React.FC<{
 };
 
 export const PageLayout: React.FC = () => {
+  // State to hold the uploaded image URLs for both sections
+  const [leftImageUrl, setLeftImageUrl] = useState<string | null>(null);
+  const [rightImageUrl, setRightImageUrl] = useState<string | null>(null);
+
+  // Handler for left image upload
+  const handleLeftImageUpload = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file); // Create URL for the uploaded image
+      setLeftImageUrl(imageUrl); // Set the image URL to display
+    }
+  };
+
+  // Handler for right image upload
+  const handleRightImageUpload = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file); // Create URL for the uploaded image
+      setRightImageUrl(imageUrl); // Set the image URL to display
+    }
+  };
+
   return (
     <div
       css={css`
         display: flex;
-        margin-top: 16vh;
-        margin-left: 0px;
         flex-direction: column;
         min-height: 100vh;
         width: 100vw;
         font-size: 10px;
       `}
     >
+      {/* Header */}
       <header
         css={css`
           position: fixed;
@@ -60,116 +75,109 @@ export const PageLayout: React.FC = () => {
           flex-direction: column;
           justify-content: space-between;
           padding: 12px;
-          margin-left: auto;
           box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
           z-index: 1000;
-          background-color: lightgray;
+          background-color: #739ddc;
         `}
       >
-        <div
-          css={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-          `}
-        >
-          <TabBarItem
-            name="Throw"
-            path="/"
-            icon={<CurrentLocation size={25} strokeWidth={2} />}
-          />
-          <div
-            css={css`
-              display: flex;
-              flex-direction: row;
-              align-items: start;
-              justify-content: space-around;
-            `}
-          >
-            <TabBarItem
-              name="Money"
-              path="/"
-              icon={<Coin size={25} strokeWidth={2} />}
-            />
-            <div
-              css={css`
-                display: flex;
-                padding: 5px;
-              `}
-            />
-            <TabBarItem
-              name="Tomato"
-              path="/"
-              icon={<Circles size={25} strokeWidth={2} />}
-            />
-            <div
-              css={css`
-                display: flex;
-                padding: 5px;
-              `}
-            />
-            <TabBarItem
-              name="My Profile"
-              path="/"
-              icon={<UserCircle size={25} strokeWidth={2} />}
-            />
-          </div>
-        </div>
-
-        <div
-          css={css`
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            margin-top: 9px;
-            align-items: center;
-          `}
-        >
-          <CaretLeft size={25} strokeWidth={5} />
-
-          <TabBarItem
-            name="Friend"
-            path="/"
-            icon={<UserCircle size={25} strokeWidth={2} />}
-          />
-          <TabBarItem
-            name="Friend"
-            path="/"
-            icon={<UserCircle size={25} strokeWidth={2} />}
-          />
-          <TabBarItem
-            name="Friend"
-            path="/"
-            icon={<UserCircle size={25} strokeWidth={2} />}
-          />
-          <TabBarItem
-            name="Friend"
-            path="/"
-            icon={<UserCircle size={25} strokeWidth={2} />}
-          />
-          <TabBarItem
-            name="Friend"
-            path="/"
-            icon={<UserCircle size={25} strokeWidth={2} />}
-          />
-          <TabBarItem
-            name="Add Friend"
-            path="/"
-            icon={<UserPlus size={23} strokeWidth={2} />}
-          />
-          <CaretRight size={25} strokeWidth={5} />
-        </div>
+        <h1>Header</h1>
       </header>
+
+      {/* Main Content */}
       <main
         css={css`
-          flex: 1;
-          overflow-y: auto;
-          overflow-x: hidden;
-          padding-bottom: 60px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+          height: calc(100vh - 16vh); /* Remaining height after header */
+          margin-top: 16vh;
         `}
       >
-        <Outlet />
+        {/* Left Section */}
+        <section
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            flex-direction: column;
+          `}
+        >
+          {/* Display the uploaded image */}
+          {leftImageUrl && (
+            <img
+              src={leftImageUrl}
+              alt="Uploaded Left"
+              css={css`
+                margin-bottom: 20px; /* Add space between image and button */
+                max-width: 100%;
+                height: auto;
+              `}
+            />
+          )}
+
+          <div>
+            <input
+              type="file"
+              accept="image/png"
+              onChange={handleLeftImageUpload}
+              css={css`
+                margin-top: 10px;
+                padding: 5px;
+              `}
+            />
+            <p>Upload PNG file (Left Section)</p>
+          </div>
+        </section>
+
+        {/* Right Section */}
+        <section
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            flex-direction: column;
+          `}
+        >
+          {/* Display the uploaded image */}
+          {rightImageUrl && (
+            <img
+              src={rightImageUrl}
+              alt="Uploaded Right"
+              css={css`
+                margin-bottom: 20px; /* Add space between image and button */
+                max-width: 100%;
+                height: auto;
+              `}
+            />
+          )}
+
+          <div>
+            <input
+              type="file"
+              accept="image/png"
+              onChange={handleRightImageUpload}
+              css={css`
+                margin-top: 10px;
+                padding: 5px;
+              `}
+            />
+            <p>Upload PNG file (Right Section)</p>
+          </div>
+        </section>
       </main>
+
+      {/* Outlet to render child routes */}
+      <Outlet />
+
+      {/* Navigation Bar */}
       <nav
         css={css`
           position: fixed;
@@ -187,19 +195,9 @@ export const PageLayout: React.FC = () => {
         `}
       >
         <TabBarItem
-          name="Subject List"
-          path="/SubjectList"
-          icon={<List size={15} strokeWidth={2} />}
-        />
-        <TabBarItem
-          name="Timer"
-          path="/Timer"
-          icon={<ClockHour4 size={15} strokeWidth={2} />}
-        />
-        <TabBarItem
-          name="Home"
+          name="Continue"
           path="/"
-          icon={<Home size={15} strokeWidth={2} />}
+          icon={<ArrowBigRight size={15} strokeWidth={2} />}
         />
       </nav>
     </div>
